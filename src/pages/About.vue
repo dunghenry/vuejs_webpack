@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>About Page</h1>
-        {{ count }}
         {{ data }}
     </div>
 </template>
@@ -14,26 +13,31 @@ export default {
         const title = ref('Hehe');
         return {
             title,
-        }
-
+        };
+    },
+    created() {
+        console.log('Created');
+        console.log(this.title);
+        console.log(this.todos.todos[0]);
     },
     mounted() {
-        console.log(this.title)
+        console.log('Mounted');
     },
-    
-    // computed: {
-    //     count() {
-    //         return this.$store.state.count;
-    //     },
-    // },
+
+    computed: {
+        todos() {
+            return this.$store.state.todos;
+        },
+    },
 
     // computed: mapState([
-    //     'count',
+    //     'todos',
     // ]),
 
-    computed: mapState({
-        count: (state) => state.count,
-    }),
+    // computed: mapState({
+    //     todos: (state) => state.todos,
+    // }),
+
     data() {
         return {
             data: 1,
